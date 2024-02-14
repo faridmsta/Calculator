@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/calculator" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input {
+            padding: 20px;
+            width: 300px;
+            height: 50px;
+            outline: none;
+            border: none;
+            font-size: 32px;
+            font-family: 'Calculator', sans-serif;
+            text-align: right
+        }
+
+        .line {
+            gap: 10px;
+        }
+
+        .numbers {
+            background-color: #fafafa;
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            row-gap: 10px;
+
+            & .line {
+                align-self: center;
+                width: 80%;
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+
+        .calculator {
+            width: 400px;
+            border: 1px solid black;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        button {
+            background: #fafafa;
+            border: none;
+            padding: 20px 28px;
+            font-size: 20px;
+            border-radius: 50px;
+            transition: .2s;
+        }
+
+        button:hover {
+            background: white;
+            scale: 1.1;
+        }
+
+        button:active {
+            background: white;
+            scale: .9;
+        }
+
+        .line button:last-child {
+            color: #ff3d3a;
+        }
+
+        .line:last-child button:last-child {
+            color: white;
+            background-color: #ff3d3a;
+            width: 140px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <div class="calculator">
+            <div class="inputline">
+                <input id="inp" type="text">
+            </div>
+            <div class="numbers">
+                <div class="line">
+                    <button onclick="del()">C</button>
+                    <button onclick="backsp()">⌫</button>
+                    <button style=" color:#ff3d3a ;" onclick="show('%')">%</button>
+                    <button onclick="show('/')">/</button>
+                </div>
+                <div class="line">
+                    <button onclick="show('7')">7</button>
+                    <button onclick="show('8')">8</button>
+                    <button onclick="show('9')">9</button>
+                    <button onclick="show('*')">*</button>
+                </div>
+                <div class="line">
+                    <button onclick="show('4')">4</button>
+                    <button onclick="show('5')">5</button>
+                    <button onclick="show('6')">6</button>
+                    <button onclick="show('+')">+</button>
+                </div>
+                <div class="line">
+                    <button onclick="show('1')">1</button>
+                    <button onclick="show('2')">2</button>
+                    <button onclick="show('3')">3</button>
+                    <button onclick="show('-')">-</button>
+                </div>
+                <div class="line">
+                    <button onclick="show('0')">0</button>
+                    <button onclick="show('.')">.</button>
+                    <button onclick="calc()">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let displey = document.getElementById("inp")
+
+        function del() {
+            displey.value = ""
+        }
+
+        function backsp() {
+            displey.value = displey.value.slice(0, -1)
+        }
+        function show(x) {
+
+            displey.value += x
+            
+
+        }
+
+        function calc() {
+            displey.value = eval(displey.value)
+        }
+
+
+    </script>
+
+</body>
+
+</html>
